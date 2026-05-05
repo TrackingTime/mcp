@@ -142,3 +142,6 @@ vite.config.ts.timestamp-*
 .mcpregistry_github_token
 .mcpregistry_registry_token
 API.postman_collection.json
+
+# Lock Files
+*-lock.json
