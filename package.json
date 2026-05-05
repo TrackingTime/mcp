@@ -1,5 +1,5 @@
 {
-  "name": "trackingtime-mcp",
+  "name": "@trackingtime/mcp",
   "version": "1.0.0",
   "description": "TrackingTime MCP server for events, projects, tasks, users, customers, and services.",
   "type": "module",
