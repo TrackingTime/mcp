@@ -1,0 +1,24 @@
+{
+  "name": "trackingtime-mcp-server",
+  "version": "1.0.0",
+  "description": "TrackingTime MCP server for events, projects, tasks, users, customers, and services.",
+  "type": "module",
+  "mcpName": "io.github.TrackingTime/mcp-server",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TrackingTime/mcp-server.git"
+  },
+  "engines": {
+    "node": "20.x"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "start:new": "node index-new.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "zod": "^3.25.76"
+  }
+}
