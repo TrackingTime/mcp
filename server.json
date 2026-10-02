@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.TrackingTime/mcp-server",
-  "description": "TrackingTime MCP server for profile, events, users, projects, tasks, customers, and services, with OAuth 2.0 or API key authentication.",
+  "description": "TrackingTime MCP server for time, projects, tasks, users, customers, services, and reports.",
   "version": "1.0.3",
   "websiteUrl": "https://trackingtime.co",
   "icons": [
