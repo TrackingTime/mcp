@@ -2,28 +2,42 @@
 
 The official Model Context Protocol (MCP) server for [TrackingTime](https://trackingtime.co), the time tracking software built for agencies, consultancies, and professional services teams.
 
-Connect any MCP-compatible AI assistant—including Claude Desktop, Claude Code, Cursor, Windsurf, VS Code Copilot, and ChatGPT—to your TrackingTime workspace to query your time tracking data in natural language.
+Connect Claude, ChatGPT, Cursor, VS Code, Windsurf or any MCP-compatible client to your TrackingTime workspace. Ask about your hours, start and stop timers, log time, and manage projects, tasks and customers in natural language.
 
-## 🚀 Features
+- **Remote server, nothing to install:** `https://mcp.trackingtime.co/mcp`
+- **Transport:** Streamable HTTP
+- **Auth:** OAuth 2.1 (sign in with your TrackingTime account). An App Password via the `X-API-Key` header is also supported for clients without OAuth.
 
-- **Query time entries**: Ask about logged hours by user, project, task, or date range.
-- **Retrieve projects and tasks**: List active projects, explore task structures, and check project status.
-- **Look up customers**: Query customer records linked to your projects and time data.
-- **Get user and team data**: Identify team members and their workspace roles.
-- **Run productivity queries**: Ask about billable hours, time worked per person, or team workload.
+## Features
 
-### Example Prompts
+- **Track time:** start and stop timers, log manual time entries, and edit or delete entries.
+- **Report on hours:** query time by user, project, task, customer or date range, including billable vs. non-billable time.
+- **Manage projects and tasks:** create, update, archive and assign projects and tasks; add task comments.
+- **Customers and services:** look up and manage the customers and services linked to your work.
+- **Team data:** list users, groups and schedules, and see who is tracking what.
+- **Back office:** timecards, time off, expenses, invoices and saved reports, depending on your plan and permissions.
 
-- *"How many hours did the team log last week?"*
-- *"Show me all open tasks in the Website Redesign project."*
-- *"What's the total billable time logged for Acme Corp this month?"*
-- *"List all active projects and their assigned users."*
+Every action runs with the permissions of the signed-in TrackingTime user.
 
-## 🔌 Client Configuration
+### Example prompts
 
-This is a remote, read-only server. No local installation is required. You can connect your client using the following configurations (requires your TrackingTime API key).
+- *"How many hours did the team log last week, by project?"*
+- *"Start a timer on the Homepage redesign task."*
+- *"Log 2 hours yesterday on Acme Corp > Monthly retainer."*
+- *"Which tasks in Website Redesign are over their estimate?"*
+- *"What's the billable time for Acme Corp this month?"*
 
-### For clients using mcp-remote:
+## Connect
+
+### Claude, ChatGPT and other clients with remote MCP support
+
+Add a custom connector with this URL and sign in with TrackingTime when prompted:
+
+```
+https://mcp.trackingtime.co/mcp
+```
+
+### Clients that need a local bridge (mcp-remote)
 
 ```json
 {
@@ -36,19 +50,35 @@ This is a remote, read-only server. No local installation is required. You can c
 }
 ```
 
-## 📡 Endpoints
-The server exposes the following endpoints for different transport and monitoring needs:
+### Using an App Password instead of OAuth
 
-- POST /mcp: JSON-RPC (streamable-http)
-- GET /health: Healthcheck
+```json
+{
+  "mcpServers": {
+    "trackingtime": {
+      "command": "npx",
+      "args": [
+        "-y", "mcp-remote", "https://mcp.trackingtime.co/mcp",
+        "--header", "X-API-Key:${TRACKINGTIME_APP_PASSWORD}"
+      ],
+      "env": { "TRACKINGTIME_APP_PASSWORD": "<your app password>" }
+    }
+  }
+}
+```
 
+## Endpoints
 
-## 🛠 Technical Details
+- `POST /mcp`: MCP over Streamable HTTP
+- `GET /health`: health check
+- `/.well-known/oauth-authorization-server` and `/.well-known/oauth-protected-resource/mcp`: OAuth discovery
 
-Auth: Basic Auth (App Password)
+The legacy SSE endpoint (`/sse`) has been retired.
 
-Maintained by: The TrackingTime team
+## Links
 
-Support: support@trackingtime.co
+- Website: [trackingtime.co](https://trackingtime.co)
+- MCP Registry: `io.github.TrackingTime/mcp-server`
+- Support: support@trackingtime.co
 
-Website: [TrackingTime](https://trackingtime.co)
+Maintained by the TrackingTime team.
