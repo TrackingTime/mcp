@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.TrackingTime/mcp-server",
   "title": "TrackingTime",
-  "description": "TrackingTime MCP server for time, projects, tasks, users, customers, services, and reports.",
-  "version": "1.0.4",
+  "description": "Official TrackingTime MCP server: log hours, timers, timesheets, time off, and invoices from any AI.",
+  "version": "1.0.5",
   "websiteUrl": "https://trackingtime.co",
   "icons": [
     {

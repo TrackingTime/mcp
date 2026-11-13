@@ -1,4 +1,4 @@
-# TrackingTime MCP Server — Time Tracking for Claude, ChatGPT, Cursor and AI Agents
+# TrackingTime MCP Server - Time Tracking for AI Agents
 
 The official Model Context Protocol (MCP) server for [TrackingTime](https://trackingtime.co/), the time tracking software that runs as the operational back office for agencies, professional services, and every company that sells hours.
 
